@@ -1,3 +1,4 @@
+import flask
 from datetime import datetime, timedelta
 
 from flask import Flask, jsonify, request
@@ -17,7 +18,7 @@ app.secret_key = 'supersecreto'
 # Funções necessárias para o JWT
 def authenticate(username,password):
     auth_user = user.UserModel.find_by_name(username)
-    dict_error = {'erro':'Usuário ou senha inválidos'}
+    dict_error = {'ERRO':'Usuário ou senha inválidos'}
     if auth_user and safe_str_cmp(auth_user.password.encode('utf-8'),password.encode('utf-8')):
         return auth_user
     return auth_user, 401
